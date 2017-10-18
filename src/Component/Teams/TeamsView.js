@@ -7,16 +7,25 @@
 **/
 
 import React from 'react'
-import {PropTyes} from 'react'
+import PropTypes from 'prop-types'
 
-const TeamsView = ({teams}) => (
+import {Link} from 'react-router-dom'
+
+import './TeamsView.css'
+
+const TeamsView = ({teams}) => {
+	let formattedTeams = teams.map((val, index) => {
+		return <Link to={`/team/${val}`} className="team-listing">{val}</Link>
+	})
+
+	return (
 	<div className="team-view">
-		{teams}
+		{formattedTeams}
 	</div>
-)
+)}
 
-// TeamsView.propTypes = {
-// 	teams: PropTyes.array.isRequired
-// }
+TeamsView.propTypes = {
+	teams: PropTypes.array.isRequired
+}
 
 export default TeamsView

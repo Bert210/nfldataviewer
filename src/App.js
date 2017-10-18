@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import {BrowserRouter, Route, Link} from 'react-router-dom'
+import {BrowserRouter, Route} from 'react-router-dom'
 
 import Nav from './Component/Nav/Nav'
 import Teams from './Component/Teams/Teams'
@@ -21,16 +21,16 @@ class App extends Component {
   }
 
   render() {
-    let rows = NFL_TEAMS.map((val, index, arr) => {
-      return (<a href="#"><li className="team-item" key={index}>{val}</li></a>);
-    })
-
     return (
       <BrowserRouter>
         <div className="App">
           <Nav />
-          <Route path="/" component={Nav} />
+          <Route exact path="/" component={Teams} />
           <Route path="/teams" component={Teams} />
+
+          <Route path="/team/:teamName" render={(props) => {
+            return(<div>{props.match.params.teamName}</div>)
+          }} />
         </div>
       </BrowserRouter>
     );
