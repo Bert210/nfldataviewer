@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import {BrowserRouter, Route, Link} from 'react-router-dom'
+
+import Nav from './Component/Nav/Nav'
+import Teams from './Component/Teams/Teams'
+
 const NFL_TEAMS = ["ARI","ATL","BAL","BUF","CAR","CHI","CIN","CLE","DAL","DEN","DET","GB","HOU","IND","JAC","KC","LA","MIA","MIN","NE","NO","NYG","NYJ","OAK","PHI","PIT","SD","SEA","SF","TB","TEN","WAS"]
 var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 const getRosterURL = (team) => {
@@ -21,11 +26,13 @@ class App extends Component {
     })
 
     return (
-      <div className="App">
-        <ul className="team-list">
-          {rows}
-        </ul>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Nav />
+          <Route path="/" component={Nav} />
+          <Route path="/teams" component={Teams} />
+        </div>
+      </BrowserRouter>
     );
   }
 }
