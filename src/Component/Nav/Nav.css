@@ -1,5 +1,14 @@
 .nav-body {
-	background-color: blue;
+	background-color: #0355c5;
 	height: 100px;
 	width: 100%;
+}
+
+.nav-site-name {
+	font-size: 32px;
+	padding: 10px;
+}
+
+.nav-links {
+	
 }

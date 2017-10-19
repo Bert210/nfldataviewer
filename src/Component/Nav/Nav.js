@@ -10,7 +10,7 @@ const Nav = () => {
 			<div className="nav-site-name">
 				NFL Data Viewer
 			</div>
-			<div>
+			<div className="nav-links">
 				<ul>
 					<NavLink to="/">Home</NavLink>
 					<NavLink to="/teams">Teams</NavLink>
