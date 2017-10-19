@@ -5,6 +5,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 
 import Nav from './Component/Nav/Nav'
 import Teams from './Component/Teams/Teams'
+import Team from './Component/Teams/Team'
 
 // var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 // const getRosterURL = (team) => {
@@ -26,10 +27,7 @@ class App extends Component {
           <Nav />
           <Route exact path="/" component={Teams} />
           <Route path="/teams" component={Teams} />
-
-          <Route path="/team/:teamName" render={(props) => {
-            return(<div>{props.match.params.teamName}</div>)
-          }} />
+          <Route path="/team/:teamName" component={Team}/>
         </div>
       </BrowserRouter>
     );

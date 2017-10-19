@@ -10,7 +10,7 @@ import React, {Component} from 'react'
 
 import TeamsView from './TeamsView'
 
-import TeamsData from '../../static/teamColors.json'
+import TeamsData from '../../teamColors.json'
 
 class Teams extends Component {
 	constructor(props){
