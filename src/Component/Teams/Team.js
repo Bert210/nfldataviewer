@@ -12,26 +12,36 @@ import TeamsData from '../../teamColors.json'
 class Team extends React.Component {
 	constructor(props) {
 		super(props)
-		let teams = TeamsData.map((val, index) => {
-			val.logoName = this.convertNameToId(val.name)
-			return val
-		})
+		// let teams = TeamsData.map((val, index) => {
+		// 	val.logoName = this.convertNameToId(val.name)
+		// 	return val
+		// })
+		let selectedTeam = TeamsData.find((val) => {return val.id === this.props.match.params.teamName})
+		selectedTeam.logoName = this.convertNameToId(selectedTeam.name)
 		this.state = {
-			teams
+			team: selectedTeam
 		}
+	}
+
+	componentDidMount(){
+		fetch(this.rosterUrl(this.state.team.id))
+			.then(data => data.json())
+			.then(data => console.log(data))
 	}
 
 	convertNameToId = (name) => {
 		return name.replace(/\s+/g, '-').toLowerCase()
 	}
 
+	rosterUrl = (teamId) => {
+		return `http://api.suredbits.com/nfl/v0/team/${teamId}/schedule`
+	}
+
 	render() {
-		let selectedTeam = TeamsData.find((val) => {return val.id === this.props.match.params.teamName})
-		console.log(selectedTeam)
 		return (
 			<div>
-				<img src={`../static/logos/${selectedTeam.logoName}.svg`} alt={`${selectedTeam.name}'s Logo`} />
-				<div style={{"color": `#${selectedTeam.colors.hex[0]}`}}>{selectedTeam.name}</div></div>)
+				<img src={`../static/logos/${this.state.team.logoName}.svg`} alt={`${this.state.team.name}'s Logo`} />
+				<div style={{"color": `#${this.state.team.colors.hex[0]}`}}>{this.state.team.name}</div></div>)
 	}
 }
 
