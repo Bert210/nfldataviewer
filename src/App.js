@@ -5,7 +5,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 
 import Nav from './Component/Nav/Nav'
 import Teams from './Component/Teams/Teams'
-import Team from './Component/Teams/Team'
+import Team from './Component/Team/Team'
 
 // var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 // const getRosterURL = (team) => {
