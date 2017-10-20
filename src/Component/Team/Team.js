@@ -7,7 +7,7 @@
 **/
 import React from 'react'
 
-import ScheduleView from '../Schedule/ScheduleView'
+import Schedule from '../Schedule/Schedule'
 import TeamsData from '../../teamColors.json'
 
 class Team extends React.Component {
@@ -48,7 +48,7 @@ class Team extends React.Component {
 				<img src={`../static/logos/${this.state.team.logoName}.svg`} alt={`${this.state.team.name}'s Logo`} />
 				<div style={{"color": `#${this.state.team.colors.hex[0]}`}}>{this.state.team.name}</div>
 				
-				<ScheduleView loading={!this.state.scheduleDataLoaded} games={this.state.games}/>
+				<Schedule currentTeam={this.state.team} loading={!this.state.scheduleDataLoaded} games={this.state.games}/>
 			</div>
 			)	
 	}
