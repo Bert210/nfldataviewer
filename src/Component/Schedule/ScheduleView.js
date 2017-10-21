@@ -9,22 +9,25 @@
 import React from 'react'
 
 
-const ScheduleView = ({loading, games}) => {
+const ScheduleView = ({games}) => {
 	let data = "Loading..."
-	if(!loading){
-		data = games.map((game,index) => (
-			<div key={index}>
-				<span>{game.homeGame ? "Home" : "Away" }</span>
-				<span> {game.dayOfWeek}</span>
-			</div>
-		))
-	}
+	data = games.map((game,index) => (
+		<div key={index}>
+			<span>{game.outcome}</span>
+			<span> {game.opponent}</span>
+			<span> {game.score}</span>
+		</div>
+	))
+	
 	return (
+		<div>
+			<span>Week</span>
+			<span>W/N</span>
+			<span>Time and Date</span>
+			<span>Opponent</span>
+			<span>Score</span>
+		</div>	
 		<ol>
-			<div>
-				<span>Home Game</span>
-				<span>Day of the Week</span>
-			</div>
 			{data}
 		</ol>
 	)

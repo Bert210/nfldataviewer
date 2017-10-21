@@ -13,22 +13,78 @@ import ScheduleView from './ScheduleView'
 class Schedule extends React.Component {
 	constructor(props){
 		super(props)
+
+		this.state = {
+			games: undefined
+		}
 	}
 
-	render() {
-		let formattedGames = null
-		console.log('this.props.currentTeam:', this.props.currentTeam)
-		if(!this.props.loading) {
-			formattedGames = this.props.games.map(game => {
-				if(this.props.currentTeam.id === game.homeTeam.team)
-					game.homeGame = true
-				else
-					game.homeGame = false
+	componentDidMount() {
+		fetch(this.scheduleUrl(this.props.team.id))
+			.then(data => data.json())
+			.then(games => {
+				let schedule = this.formatData(games)
+				this.setState({
+					games,
+					schedule
+				})
+
 			})
+	}
+
+	scheduleUrl = (teamId) => {
+		return `http://api.suredbits.com/nfl/v0/team/${teamId}/schedule`
+	}
+
+	// We don't need to pass a lot of data to the View so we can
+	// trim a lot of it
+	// We send an array of data type containing:
+	// 	- outcome - Win Loss Draw or Unplayed denoted by - ("W")
+	//	- opponent - The name of the opponent this team played ("Green Bay Packers")
+	//	- score - The score of the game ("21 - 10")
+	formatData = (data) => {
+		data.map( game => {
+			let isHomeGame = game.homeTeam.team === game.id
+
+			let thisTeamScore = 0
+			let otherTeamScore = 0
+			let opponent = ""
+			if(isHomeGame){
+				thisTeamScore = game.homeTeam.score
+				otherTeamScore = game.awayTeam.score
+				opponent = game.awayTeam.team
+			}else{
+				thisTeamScore = game.awayTeam.score
+				otherTeamScore = game.homeTeam.score
+				opponent = game.homeTeam.team
+			}
+
+			let outcome = "-"
+			if(thisTeamScore > otherTeamScore){
+				outcome = "W"
+			}else if(thisTeamScore === otherTeamScore) {
+				outcome = "D"
+			}else {
+				outcome = "L"
+			}
+
+			let score = "" + thisTeamScore + " - " + otherTeamScore
+
+			return ({
+				outcome,
+				opponent,
+				score
+			})
+		})
+	}
+
+
+	render() {
+		if(this.state.games === undefined){
+			return(<div>Loading...</div>)
+		}else{
+			return <ScheduleView loading={this.state.loading} games={this.state.games} />
 		}
-		return (
-			<ScheduleView loading={this.props.loading} games={this.props.games} />
-		)
 	}
 }
 
