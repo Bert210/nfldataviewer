@@ -1,0 +1,17 @@
+.list-container {
+	/*display: block;*/
+}
+
+.list-row {
+	/*display: inline-block;*/
+}
+
+.list-item {
+	width: 100px;
+	display: inline-block;
+	/*background-color: red;*/
+}
+
+.list-row:hover {
+	background-color: #eee;
+}
