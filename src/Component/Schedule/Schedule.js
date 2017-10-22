@@ -9,6 +9,7 @@
 import React from 'react'
 
 import ScheduleView from './ScheduleView'
+import LoadingView from '../Display/LoadingView'
 
 class Schedule extends React.Component {
 	constructor(props){
@@ -43,7 +44,7 @@ class Schedule extends React.Component {
 	//	- opponent - The name of the opponent this team played ("Green Bay Packers")
 	//	- score - The score of the game ("21 - 10")
 	formatData = (data) => {
-		data.map( game => {
+		return data.map( game => {
 			let isHomeGame = game.homeTeam.team === game.id
 
 			let thisTeamScore = 0
@@ -59,6 +60,8 @@ class Schedule extends React.Component {
 				opponent = game.homeTeam.team
 			}
 
+			let week = game.week.replace("NflWeek", "")
+
 			let outcome = "-"
 			if(thisTeamScore > otherTeamScore){
 				outcome = "W"
@@ -73,6 +76,7 @@ class Schedule extends React.Component {
 			return ({
 				outcome,
 				opponent,
+				week,
 				score
 			})
 		})
@@ -81,9 +85,9 @@ class Schedule extends React.Component {
 
 	render() {
 		if(this.state.games === undefined){
-			return(<div>Loading...</div>)
+			return(<LoadingView />)
 		}else{
-			return <ScheduleView loading={this.state.loading} games={this.state.games} />
+			return <ScheduleView games={this.state.schedule} />
 		}
 	}
 }

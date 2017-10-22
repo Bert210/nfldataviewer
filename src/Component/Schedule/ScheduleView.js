@@ -8,28 +8,13 @@
 
 import React from 'react'
 
+import OrderedList from '../Display/OrderedList'
+
 
 const ScheduleView = ({games}) => {
-	let data = "Loading..."
-	data = games.map((game,index) => (
-		<div key={index}>
-			<span>{game.outcome}</span>
-			<span> {game.opponent}</span>
-			<span> {game.score}</span>
-		</div>
-	))
 	
 	return (
-		<div>
-			<span>Week</span>
-			<span>W/N</span>
-			<span>Time and Date</span>
-			<span>Opponent</span>
-			<span>Score</span>
-		</div>	
-		<ol>
-			{data}
-		</ol>
+		<OrderedList titles={["Week", "Outcome", "Opponent", "Socre"]} data={games} orderedBy="week" />
 	)
 }
 
