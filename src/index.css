@@ -2,4 +2,36 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  /*height: 100%;*/
+}
+/*
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+#root {
+	margin: 0;
+	height: 100%;
+}*/
+
+.error {
+	padding: 10px;
+	background-color: #ffd6d0;
+	border-radius: 10px;
+	margin: 10px auto;
+	width: 250px;
+	color: darkred;
+	font-weight: bold;
+}
+
+.warning {
+	padding: 10px;
+	background-color: #fffc65;
+	border-radius: 10px;
+	margin: 10px auto;
+	width: 250px;
+	color: #faac17;
+	font-weight: bold;
 }

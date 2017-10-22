@@ -30,7 +30,7 @@ const TeamsView = ({teams}) => {
 	})
 
 	return (
-	<div className="team-view">
+	<div className="teams-view">
 		{formattedTeams}
 	</div>
 )}

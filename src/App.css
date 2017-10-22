@@ -1,3 +1,8 @@
+.App {
+	height: 100%;
+	background-color: #eaedf1;
+}
+
 .team-item {
   display: inline-block;
   margin: 10px; 
