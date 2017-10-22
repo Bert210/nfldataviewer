@@ -6,10 +6,26 @@
 	/*display: inline-block;*/
 }
 
+.list-title {
+	font-weight: bold;
+}
+
 .list-item {
-	width: 100px;
+	width: 10em;
 	display: inline-block;
 	/*background-color: red;*/
+}
+
+.list-item.small {
+	width: 5em;
+}
+
+.list-item.med {
+	width: 10em;
+}
+
+.list-item.large {
+	width: 15em;
 }
 
 .list-row:hover {

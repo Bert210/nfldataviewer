@@ -14,7 +14,12 @@ import OrderedList from '../Display/OrderedList'
 const ScheduleView = ({games}) => {
 	
 	return (
-		<OrderedList titles={["Week", "Outcome", "Opponent", "Socre"]} data={games} orderedBy="week" />
+		<OrderedList titles={[
+			{title:"Week",key:"week"},
+			{title:"Outcome",key:"outcome"},
+			{title:"Opponent",key:"opponent"},
+			{title:"Score",key:"score"}
+			]} data={games} orderedBy="week" />
 	)
 }
 

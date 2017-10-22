@@ -8,6 +8,7 @@
 import React from 'react'
 
 import Schedule from '../Schedule/Schedule'
+import Roster from '../Roster/Roster'
 import TeamsData from '../../teamColors.json'
 import './Team.css'
 
@@ -41,6 +42,9 @@ class Team extends React.Component {
 
 					<div className="schedule-container">
 						<Schedule team={this.state.team}/>
+					</div>
+					<div className="roster-container">
+						<Roster team={this.state.team}/>
 					</div>
 				</div>
 			</div>	

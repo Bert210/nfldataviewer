@@ -12,33 +12,33 @@ import PropTypes from 'prop-types'
 import './OrderedList.css'
 
 const OrderedList = ({data, orderedBy, order, titles}) => {
-	console.log(data)
-	// let sortedData = data.sort((a, b) => {
-	// 	return parseInt(a[orderedBy],10) < parseInt(b[orderedBy],10);
-	// })
 
 	let sortedData = []
 
-	console.log("Starting loop")
 	for(let i = 0; i < data.length; i++){
-		let index = data[i].week
+		let index = data[i][orderedBy]
 		sortedData[index] = data[i]
 	}
 
 	sortedData = sortedData.map((game,index) => { 
+		let data = titles.map( title => {
+			let key = title.key
+			let value = game[key]
+
+
+			return <div className="list-item" key={key}>{value}</div>
+		})
+
 		return ( 
 			<div className="list-row" key={index}>
-				<div className="list-item"> {game.week}</div>
-				<div className="list-item">{game.outcome}</div>
-				<div className="list-item">{game.opponent}</div>
-				<div className="list-item"> {game.score}</div>
+				{data}
 			</div> 
 		)
 	})
 
 	let formattedTitles = titles.map((title) => {
 		return (
-			<div className="list-item list-title">{title}</div>
+			<div className="list-item list-title" key={title.title}>{title.title}</div>
 		)
 	})
 
