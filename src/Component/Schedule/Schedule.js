@@ -45,7 +45,7 @@ class Schedule extends React.Component {
 	//	- score - The score of the game ("21 - 10")
 	formatData = (data) => {
 		return data.map( game => {
-			let isHomeGame = game.homeTeam.team === game.id
+			let isHomeGame = game.homeTeam.team === this.props.team.id
 
 			let thisTeamScore = 0
 			let otherTeamScore = 0
