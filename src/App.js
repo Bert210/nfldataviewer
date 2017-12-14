@@ -22,7 +22,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={'nfldataviewer'}>
         <div className="App">
           <Nav />
           <Route exact path="/" component={Teams} />
