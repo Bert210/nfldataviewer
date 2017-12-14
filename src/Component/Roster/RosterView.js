@@ -15,11 +15,8 @@ const titles = [
 				{title:"Name",key:"fullName"},
 				{title:"Position",key:"position"},
 				{title:"Birth Date",key:"birthDate"},
-				{title:"Weight",key:"weight"},
-				{title:"Height",key:"height"},
 				{title:"Status",key:"status"},
 				{title:"College",key:"college"},
-				// {title:"Profile Url",key:"profileUrl"}
 				]
 
 const RosterView = ({players}) => {
