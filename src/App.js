@@ -22,12 +22,13 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter basename={'nfldataviewer'}>
+      <BrowserRouter basename={'/nfldataviewer'}>
         <div className="App">
           <Nav />
           <Route exact path="/" component={Teams} />
           <Route path="/teams" component={Teams} />
           <Route path="/team/:teamName" component={Team}/>
+          <Route path="*" render={() => "Page Not Found"}/>
         </div>
       </BrowserRouter>
     );
