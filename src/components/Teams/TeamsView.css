@@ -1,0 +1,37 @@
+.teams-view{
+	background-color: #eaedf1;
+	padding: 10px;
+}
+
+.team-logo {
+	width: 50%;
+}
+
+.team-listing {
+	/* I want to use display: inline-block but it doesn't work as expected */
+	/* It renders differently if the name is on one line or more */
+	/*display: inline-block;*/
+	/* border-color: #2d3644 */
+	display: inline-flex;
+	flex-direction: column;
+	font-size: 24px;
+	padding: 10px;
+	margin: 15px;
+	width: 150px;
+	height: 175px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 5%;
+	color: #222;
+	background-color: white;
+	border: 2px solid green;
+}
+
+.team-listing:hover{
+	/*background-color: cyan;*/
+	box-shadow: 2px 2px #888;
+}
+
+.team-listing div {
+	width: 100%;
+}

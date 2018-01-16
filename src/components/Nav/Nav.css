@@ -1,0 +1,25 @@
+.nav-body {
+	background-color: #0355c5;
+	height: 100px;
+	width: 100%;
+	border-bottom: 1px #222 solid;
+}
+
+.nav-site-name {
+	font-size: 32px;
+	padding: 10px;
+	color: white;
+}
+
+.nav-links a{
+	text-decoration: none;
+	color: white;
+	padding: 5px;
+}
+
+.nav-links a:hover {
+	/*text-decoration: underline;*/
+	color: #0355c5;
+	background-color: white;
+	border-radius: 4px;
+}
