@@ -1,4 +1,4 @@
-import { fork, takeLatest, put } from 'redux-saga/effects';
+import { fork, takeLatest, put, call } from 'redux-saga/effects';
 import { LOAD_TEAM } from './constants';
 import { loadTeamSucceeded, loadTeamFailed } from './actions';
 
@@ -9,7 +9,6 @@ const scheduleUrl = (teamId) => {
 
 function fetchTeamData(teamName) {
     const url = scheduleUrl(teamName);
-    console.log(url);
     return fetch(url)
     	.then(data => data.json());
 }
@@ -17,9 +16,10 @@ function fetchTeamData(teamName) {
 function* fetchTeam(action) {
     // console.log(action.team);
     try {
-        const data = fetchTeamData(action.team)
-        console.log(data);
-        yield* put(loadTeamSucceeded(data));
+        // const data = fetchTeamData(action.team)
+        // console.log(data);
+        const data = yield call(fetchTeamData, action.team)
+        yield put(loadTeamSucceeded(data));
     } catch (e) {
         yield put(loadTeamFailed(e.message));
     }
