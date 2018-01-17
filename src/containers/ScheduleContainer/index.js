@@ -18,7 +18,7 @@ class ScheduleContainer extends React.Component {
 		super(props)
 
 		this.state = {
-			games: undefined
+			loaded: false,
 		}
 	}
 	
@@ -26,17 +26,15 @@ class ScheduleContainer extends React.Component {
 		this.props.loadTeam(this.props.team.id)
 	}
 
-	componentDidMount() {
-		// fetch(this.scheduleUrl(this.props.team.id))
-		// 	.then(data => data.json())
-		// 	.then(games => {
-		// 		let schedule = this.formatData(games)
-		// 		this.setState({
-		// 			games,
-		// 			schedule
-		// 		})
+	componentWillReceiveProps(newProps) {
+		console.log('newProps.data: ', newProps.data);
+		if (newProps.data !== undefined){
+			this.setState({loaded: true});
+		}
+	}
 
-		// 	})
+	componentDidMount() {
+		// console.log('testing');
 	}
 
 	scheduleUrl = (teamId) => {
@@ -90,11 +88,17 @@ class ScheduleContainer extends React.Component {
 
 
 	render() {
-		if(this.state.games === undefined){
+		if(!this.state.loaded){
 			return(<LoadingView />)
 		}else{
-			return <Schedule games={this.state.schedule} />
+			return <Schedule {...this.props} />
 		}
+	}
+}
+
+const mapStateToProps = (state) => {
+	return {
+		data: state.schedule.get('data'),
 	}
 }
 
@@ -102,4 +106,4 @@ const mapDispatchToProps = (dispatch) => ({
 	loadTeam: (team) => {dispatch(loadTeam(team))}
 });
 
-export default connect(null, mapDispatchToProps)(ScheduleContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ScheduleContainer);
