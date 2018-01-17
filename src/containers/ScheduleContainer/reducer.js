@@ -12,7 +12,7 @@ const initialState = fromJS({
 const scheduleContainerReducer = (state = initialState, action) => {
     switch(action.type){
         case LOAD_TEAM_SUCCEEDED:
-            return state.set('data', ['We have data']);
+            return state.set('data', action.data);
         default:
             return state;
     }
