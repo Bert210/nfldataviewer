@@ -13,13 +13,13 @@ import {Link} from 'react-router-dom'
 
 import './TeamsView.css'
 
-const TeamsView = ({teams}) => {
+const TeamsView = ({ teams }) => {
 	let formattedTeams = teams.map((val, index) => {
 		let bgColor = `#${val.colors.hex[0]}`
 		return (
 		<Link key={val.id} to={`/team/${val.id}`} className="team-listing" style={{"borderColor":bgColor}}>
 			<div>
-				<img className="team-logo" src={`../static/logos/${val.logoName}.svg`} alt="logo"/>
+				<img className="team-logo" src={`../../static/logos/${val.logoName}.svg`} alt="logo"/>
 			</div>
 			<div className="divider" style={{display: "inline-block", width: "100%", height: "1px", backgroundColor: "black"}}/>
 			<div style={{color: bgColor}}>
