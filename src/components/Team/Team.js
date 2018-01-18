@@ -36,7 +36,7 @@ class Team extends React.Component {
 			<div className="background">
 				<div className="team-container">
 					<div className="title">
-						<img className="team-logo" src={`../../static/logos/${this.state.team.logoName}.svg`} alt={`${this.state.team.name}'s Logo`} />
+						<img className="team-logo" src={`../../nfldataviewer/static/logos/${this.state.team.logoName}.svg`} alt={`${this.state.team.name}'s Logo`} />
 						<div style={{"color": `#${this.state.team.colors.hex[0]}`}}>{this.state.team.name}</div>
 					</div>
 
