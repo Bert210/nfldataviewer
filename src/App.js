@@ -12,8 +12,10 @@ import Nav from './components/Nav/Nav'
 import Teams from './components/Teams/Teams'
 import Team from './components/Team/Team'
 
-const history = createHistory({basenname:'/nfldataviewer'})
+console.log(createHistory);
 
+const history = createHistory({basename:'/nfldataviewer'})
+console.log(history);
 const store = storeCreator({}, history);
 // runSaga();
 
