@@ -7,7 +7,7 @@
 **/
 import React from 'react'
 
-import Schedule from '../Schedule/Schedule'
+import ScheduleContainer from '../../containers/ScheduleContainer';
 import Roster from '../Roster/Roster'
 import TeamsData from '../../teamColors.json'
 import './Team.css'
@@ -41,10 +41,10 @@ class Team extends React.Component {
 					</div>
 
 					<div className="schedule-container">
-						<Schedule team={this.state.team}/>
+						<ScheduleContainer team={this.state.team}/>
 					</div>
 					<div className="roster-container">
-						<Roster team={this.state.team}/>
+						{/* <Roster team={this.state.team}/> */}
 					</div>
 				</div>
 			</div>	

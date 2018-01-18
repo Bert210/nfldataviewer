@@ -7,30 +7,34 @@
 **/
 
 import React from 'react'
+import { connect } from 'react-redux';
+import { loadTeam } from './actions';
+import Schedule from '../../components/Schedule';
+import LoadingView from '../../components/Display/LoadingView'
 
-import ScheduleView from './ScheduleView'
-import LoadingView from '../Display/LoadingView'
 
-class Schedule extends React.Component {
+class ScheduleContainer extends React.Component {
 	constructor(props){
 		super(props)
 
 		this.state = {
-			games: undefined
+			loaded: false,
+		}
+	}
+	
+	componentWillMount() {
+		this.props.loadTeam(this.props.team.id)
+	}
+
+	componentWillReceiveProps(newProps) {
+		console.log('newProps.data: ', newProps.data);
+		if (newProps.data !== undefined){
+			this.setState({loaded: true});
 		}
 	}
 
 	componentDidMount() {
-		fetch(this.scheduleUrl(this.props.team.id))
-			.then(data => data.json())
-			.then(games => {
-				let schedule = this.formatData(games)
-				this.setState({
-					games,
-					schedule
-				})
-
-			})
+		// console.log('testing');
 	}
 
 	scheduleUrl = (teamId) => {
@@ -84,12 +88,22 @@ class Schedule extends React.Component {
 
 
 	render() {
-		if(this.state.games === undefined){
+		if(!this.state.loaded){
 			return(<LoadingView />)
 		}else{
-			return <ScheduleView games={this.state.schedule} />
+			return <Schedule {...this.props} />
 		}
 	}
 }
 
-export default Schedule
+const mapStateToProps = (state) => {
+	return {
+		data: state.schedule.get('data'),
+	}
+}
+
+const mapDispatchToProps = (dispatch) => ({
+	loadTeam: (team) => {dispatch(loadTeam(team))}
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScheduleContainer);
