@@ -19,13 +19,13 @@ const titles = [
 				{title:"College",key:"college"},
 				]
 
-const RosterView = ({players}) => {
+const Roster = ({ data }) => {
 	return (
 		<div>
 			<h3>Roster</h3>
-			<OrderedList titles={titles} data={players} orderedBy="uniformNumber" />
+			<OrderedList titles={titles} data={data} orderedBy="uniformNumber" />
 		</div>
 	)
 }
 
-export default RosterView
+export default Roster

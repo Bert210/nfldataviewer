@@ -10,7 +10,7 @@ import { storeCreator } from './store';
 
 import Nav from './components/Nav/Nav'
 import Teams from './components/Teams/Teams'
-import Team from './components/Team/Team'
+import TeamContainer from './containers/TeamContainer';
 
 console.log(createHistory);
 
@@ -30,7 +30,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Teams} />
               <Route path="/teams" component={Teams} />
-              <Route path="/team/:teamName" component={Team}/>
+              <Route path="/team/:teamName" component={TeamContainer}/>
               <Route render={() => "Page Not Found"}/>
             </Switch>
           </div>

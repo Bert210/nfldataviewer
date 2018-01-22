@@ -17,12 +17,20 @@ const TeamsView = ({ teams }) => {
 	let formattedTeams = teams.map((val, index) => {
 		let bgColor = `#${val.colors.hex[0]}`
 		return (
-		<Link key={val.id} to={`/team/${val.id}`} className="team-listing" style={{"borderColor":bgColor}}>
+		<Link 
+			key={val.id} 
+			to={`/team/${val.id}`} 
+			className="team-listing" 
+			style={{"borderColor":bgColor}}
+		>
 			<div>
 				<img className="team-logo" src={`../nfldataviewer/static/logos/${val.logoName}.svg`} alt="logo"/>
 			</div>
-			<div className="divider" style={{display: "inline-block", width: "100%", height: "1px", backgroundColor: "black"}}/>
-			<div style={{color: bgColor}}>
+			<div 
+				className="divider" 
+				style={{display: "inline-block", width: "100%", height: "1px", backgroundColor: "black"}}
+			/>
+			<div className="team-name" style={{color: bgColor}}>
 				{val.name}
 			</div>
 		</Link>
