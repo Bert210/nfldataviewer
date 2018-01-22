@@ -8,7 +8,7 @@
 import React from 'react'
 
 import ScheduleContainer from '../../containers/ScheduleContainer';
-// import Roster from '../../components/Roster/Roster'
+import RosterContainer from '../../containers/RosterContainer';
 import './Team.css'
 
 const Team = ({ team }) => {
@@ -30,7 +30,7 @@ const Team = ({ team }) => {
 					<ScheduleContainer team={team}/>
 				</div>
 				<div className="roster-container">
-					{/* <Roster team={this.state.team}/> */}
+					<RosterContainer team={team}/>
 				</div>
 			</div>
 		</div>	

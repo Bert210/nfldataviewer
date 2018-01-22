@@ -12,7 +12,7 @@ import PropTypes from 'prop-types'
 import './OrderedList.css'
 
 const OrderedList = ({data, orderedBy, order, titles}) => {
-
+	if(!data) { return <div>No Data</div>; }
 	let sortedData = []
 
 	for(let i = 0; i < data.length; i++){
@@ -41,7 +41,6 @@ const OrderedList = ({data, orderedBy, order, titles}) => {
 			<div className="list-item list-title" key={title.title}>{title.title}</div>
 		)
 	})
-
 
 	return(
 		<div className="list-container">
